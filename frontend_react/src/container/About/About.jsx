@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { images } from '../../constants'
 
 import './About.scss';
-
+import { urlFor, client } from '../../client';
 
 const abouts = [
   {title: 'Web development', description: 'I am a good developer.', imgUrl:images.about01},
@@ -15,6 +15,14 @@ const abouts = [
 ]
 
 const About = () => {
+  const [abouts, setAbouts] = useState([]);
+
+  useEffect(() => {
+      const query = '*[_type == "about"]';
+      client.fetch(query)
+      .then((data) => { setAbouts(data);
+      })
+  }, []);
   return (
    <>
    <h2 className="head-text"> I know that  <span>Good Development</span>  <br /> means  <span>Good Buisness</span> </h2>
