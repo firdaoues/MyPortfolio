@@ -7,9 +7,9 @@ import './About.scss';
 
 const abouts = [
   {title: 'Web development', description: 'I am a good developer.', imgUrl:images.about01},
-  {title: 'Web Designer', description: 'I am a good developer.', imgUrl:images.about02},
-  {title: 'UI/UX', description: 'I am a good developer.', imgUrl:images.about03},
-  {title: 'Web Animations', description: 'I am a good developer.', imgUrl:images.about04}
+  {title: 'Front Developement', description: 'I am a good developer.', imgUrl:images.about02},
+  {title: 'Back Developement', description: 'I am a good developer.', imgUrl:images.about03},
+  {title: 'MERN Stack', description: 'I am a good developer.', imgUrl:images.about04}
  
  
 ]
@@ -17,12 +17,7 @@ const abouts = [
 const About = () => {
   return (
    <>
-   <h2 className="head-text"> I know that 
-   <span>Good Design</span>
-   <br />
-   means 
-   <span>Good Buisness</span>
-   </h2>
+   <h2 className="head-text"> I know that  <span>Good Development</span>  <br /> means  <span>Good Buisness</span> </h2>
    <div className="app__profiles">
     {abouts.map((about, index) => (
       <motion.div 
