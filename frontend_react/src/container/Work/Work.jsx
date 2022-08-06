@@ -16,6 +16,9 @@ const Work = () => {
     client.fetch(query)
     .then((data) => setWorks(data))
 }, []);
+const handleWorkFilter = (item) => {
+  
+}
   return (
     <>
        <h2 className="head-text"> My Creative <span>Portfolio</span>  Section </h2>
