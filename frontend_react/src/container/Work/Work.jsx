@@ -11,13 +11,14 @@ import './Work.scss';
 const Work = () => {
   const [works, setWorks] = useState([]);
 
+  const [activeFilter, setactiveFilter] = useState('All');
   useEffect(() => {
     const query = '*[_type == "works"]';
     client.fetch(query)
     .then((data) => setWorks(data))
 }, []);
 const handleWorkFilter = (item) => {
-  
+
 }
   return (
     <>
