@@ -10,12 +10,17 @@ import './Work.scss';
 
 const Work = () => {
   const [works, setWorks] = useState([]);
-
+ const [animateCard, setanimateCard] = useState({ y: 0, opacity: 1});
   const [activeFilter, setactiveFilter] = useState('All');
+
   useEffect(() => {
     const query = '*[_type == "works"]';
     client.fetch(query)
-    .then((data) => setWorks(data))
+    .then((data) => {
+      setFilterWork(data);
+      setWorks(data);
+      })
+    
 }, []);
 const handleWorkFilter = (item) => {
 
@@ -26,10 +31,11 @@ const handleWorkFilter = (item) => {
        <div className="app__work_filter">
        {works.map((work, index) => (
       <motion.div 
+      animate={animateCard}
       whileInView={{ opacity: 1}}
       whileHover= {{ scale: 1.1}}
-      transition= {{ duration: 0.5, type:'tween'}}
-      className="app__profile-item"
+      transition= {{ duration: 0.5, delayChildren: 0.5 }}
+      className="app__work-portfolio"
       key={work.title + index}>
       <img src={urlFor(work.imgUrl)} alt={work.title} />
       <h2 className="bold-text" style={{marginTop: 20}}>{work.title}</h2>
