@@ -11,7 +11,7 @@ import './Work.scss';
 const Work = () => {
   const [works, setWorks] = useState([]);
   const [animateCard, setanimateCard] = useState({ y: 0, opacity: 1});
-  const [activeFilter, setactiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState('All');
   const [filterWork, setFilterWork] = useState([])
 
 
@@ -19,14 +19,26 @@ const Work = () => {
     const query = '*[_type == "works"]';
     client.fetch(query)
     .then((data) => {
-      setFilterWork(data);
       setWorks(data);
+      setFilterWork(data);
       })
     
 }, []);
 
   const handleWorkFilter = (item) => {
+    setActiveFilter(item);
+    setanimateCard([{y:100, opacity: 0}]);
 
+
+    setTimeout(() => {
+      setanimateCard([{y:0, opacity: 1}]);
+      
+      if (item === 'All') {
+        setFilterWork(works);
+      }else {
+        setFilterWork(works.filter((work) => work.tags.includes(item)));
+      }
+    },500)
 }
 
   return (
