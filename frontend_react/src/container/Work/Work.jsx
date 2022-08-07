@@ -28,7 +28,7 @@ const Work = () => {
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
     setanimateCard([{y:100, opacity: 0}]);
- console.log(item);
+
     setTimeout(() => {
       setanimateCard([{y:0, opacity: 1}]);
           
