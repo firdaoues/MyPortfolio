@@ -28,17 +28,17 @@ const Work = () => {
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
     setanimateCard([{y:100, opacity: 0}]);
-
-
+ console.log(item);
     setTimeout(() => {
       setanimateCard([{y:0, opacity: 1}]);
-      
+          
       if (item === 'All') {
         setFilterWork(works);
       }else {
-        setFilterWork(works.filter((work) => work.tags.includes(item)));
+        setFilterWork(works.filter((work) => work?.tags?.includes(item)));
       }
-    },500)
+    }, 500);
+    
 }
 
   return (
@@ -50,8 +50,9 @@ const Work = () => {
           key = {index}
           onClick={() => handleWorkFilter(item)} 
           className={`app__work-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : ''}`} > {item}
+        
           </div>
-         
+           
         ))}
         </div>
 
@@ -64,7 +65,7 @@ const Work = () => {
       <div className="app__work-item app__flex" key={index}>
         <div className="app__work-img app__flex">
           <img src={urlFor(work.imgUrl)} alt={work.name} />
-          
+      
           <motion.div 
           whileHover = {{opacity: [0, 1]}}
           transition= {{ duration: 0.5, ease: 'easeInOut', staggerChildren: 0.5 }}
