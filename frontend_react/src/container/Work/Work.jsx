@@ -6,6 +6,7 @@ import AppWrap from '../../wrapper/AppWrap';
 import { urlFor, client } from '../../client';
 
 import './Work.scss';
+import { MotionWrap } from '../../wrapper';
 
 
 const Work = () => {
@@ -117,4 +118,9 @@ const Work = () => {
   )
 }
 
-export default AppWrap(Work, 'work')
+
+export default AppWrap(
+  MotionWrap(Work, 'app__work'),
+  'work',
+  "app__secondarybg"
+  );
