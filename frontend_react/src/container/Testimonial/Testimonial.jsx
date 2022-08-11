@@ -55,9 +55,9 @@ const Testimonial = () => {
 
       <div className="app__testimonials-btns app__flex ">
         <div className="app__flex" onClick={() => handleClick(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)}></div>
-      <HiChevronLeft />
-      <div className="app__flex" onClick={() => handleClick(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1)}></div>
-      <HiChevronRight />
+        <HiChevronLeft />
+        <div className="app__flex" onClick={() => handleClick(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1)}></div>
+        <HiChevronRight />
       </div>
       </>
     )}
