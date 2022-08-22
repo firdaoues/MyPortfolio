@@ -11,7 +11,16 @@ import './Footer.scss';
 const Footer = () => {
    const [formData, setFormData] = useState({name :'', email :'', message :''})
    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-   const [loding, setLoding] = useState(false);
+   const [loading, setLoading] = useState(false);
+
+   const { name, email, message} = formData;
+   const handleChangeInput = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData,  [name]: value});
+  }
+  const handleSubmit = () => {
+    setLoading(true);
+  }
   return (
    <>
    <h2 className='head-text'> Take a coffe and chat with me</h2>
@@ -35,7 +44,7 @@ const Footer = () => {
     <div>
       <textarea className='p-text' placeholder='Your message' value={message} name={message} onChange={handleChangeInput}/>
     </div>
-    <button type='button' className='p-text' onChange={handleChangeInput}>Send Message</button>
+    <button type='button' className='p-text' onChange={handleSubmit}>{loading ? 'Sending' : 'Send Message'}</button>
    </div>
    </>
   )
