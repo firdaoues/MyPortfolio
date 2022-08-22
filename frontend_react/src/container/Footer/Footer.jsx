@@ -20,6 +20,18 @@ const Footer = () => {
   }
   const handleSubmit = () => {
     setLoading(true);
+
+    const contact = {
+      _type: 'contact',
+      name: formData.name,
+      email: email,
+      message: message,
+    }
+    client.create(contact)
+    .then (() => {
+      setLoading(false);
+      setIsFormSubmitted(false); 
+    })
   }
   return (
    <>
@@ -34,6 +46,7 @@ const Footer = () => {
       <a href="tel: 1234567" className="p-text">1234567</a>
     </div>
    </div>
+  {!isFormSubmitted ?   
    <div className='app__footer-form app__flex'>
     <div className='app__flex'>
       <input className='p-text' type= 'text' placeholder='Your Name' name='name' value={name} onChange={handleChangeInput}/>
@@ -46,6 +59,10 @@ const Footer = () => {
     </div>
     <button type='button' className='p-text' onChange={handleSubmit}>{loading ? 'Sending' : 'Send Message'}</button>
    </div>
+   : <div>
+     <h3 className='head-text'> Thank you for getting in touch</h3>
+    </div>
+    }
    </>
   )
 }
