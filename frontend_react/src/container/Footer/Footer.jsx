@@ -14,23 +14,28 @@ const Footer = () => {
    const [loading, setLoading] = useState(false);
 
    const { name, email, message} = formData;
+ 
+
    const handleChangeInput = (e) => {
+
     const { name, value } = e.target;
     setFormData({ ...formData,  [name]: value});
   }
+
   const handleSubmit = () => {
     setLoading(true);
 
     const contact = {
       _type: 'contact',
-      name: formData.name,
+      name: name, 
       email: email,
       message: message,
     }
+
     client.create(contact)
     .then (() => {
       setLoading(false);
-      setIsFormSubmitted(false); 
+      setIsFormSubmitted(true); 
     })
   }
   return (
@@ -57,7 +62,7 @@ const Footer = () => {
     <div>
       <textarea className='p-text' placeholder='Your message' value={message} name="message" onChange={handleChangeInput}/>
     </div>
-    <button type='button' className='p-text' onChange={handleSubmit}>{loading ? 'Sending' : 'Send Message'}</button>
+    <button type='button' className='p-text' onClick={handleSubmit}>{loading ? 'Sending' : 'Send Message'}</button>
    </div>
    : <div>
      <h3 className='head-text'> Thank you for getting in touch</h3>
